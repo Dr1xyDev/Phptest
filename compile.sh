@@ -26,7 +26,7 @@ LIBDEFLATE_VERSION="c8c56a20f8f621e6a966b716b31f1dedab6a41e3" #1.25 - see above 
 EXT_PMMPTHREAD_VERSION="6.3.0"
 EXT_YAML_VERSION="2.3.0"
 EXT_LEVELDB_VERSION="88071eb1b1eae96af043229104b9d813f7cbe40c" #release not tagged
-EXT_CHUNKUTILS2_VERSION="0.3.5"
+EXT_CHUNKUTILS2_VERSION="0.4.0"
 EXT_XDEBUG_VERSION="3.5.0"
 EXT_IGBINARY_VERSION="3.2.16"
 EXT_CRYPTO_VERSION="999b3c7edbc7f8ca4fdeb0bb4bbae488ad0daf07" #release not tagged
@@ -1147,7 +1147,7 @@ write_done
 
 get_github_extension "leveldb" "$EXT_LEVELDB_VERSION" "pmmp" "php-leveldb"
 
-get_github_extension "chunkutils2" "$EXT_CHUNKUTILS2_VERSION" "pmmp" "ext-chunkutils2"
+get_github_extension "chunkutils2" "$EXT_CHUNKUTILS2_VERSION" "Dr1xyDev" "ext-chunkutils2"
 
 get_github_extension "libdeflate" "$EXT_LIBDEFLATE_VERSION" "pmmp" "ext-libdeflate"
 
