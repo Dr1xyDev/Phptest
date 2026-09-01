@@ -27,7 +27,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools and dependencies
         run: |
@@ -43,7 +43,7 @@ jobs:
 
       - name: Prepare compile.sh download cache
         id: download-cache-x86
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ./download_cache
           key: compile-sh-cache-ssl-https-x86_64-${{ hashFiles('./compile.sh') }}
@@ -69,7 +69,7 @@ jobs:
           tar -czf ./Z-PHP-8.3-Linux-x86_64-PM5-debugging-symbols.tar.gz bin-debug
 
       - name: Upload PHP binary artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: PHP-8.3-Linux-x86_64-PM5
@@ -84,7 +84,7 @@ jobs:
         run: tar -czf workspace.tar.gz install_data || true
 
       - name: Upload workspace
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: PHP-8.3-Linux-x86_64-workspace-PM5
@@ -101,7 +101,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools
         run: |
@@ -109,7 +109,7 @@ jobs:
           sudo apt-get install -y wget curl unzip tar
 
       - name: Download Linux x86_64 PHP artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: PHP-8.3-Linux-x86_64-PM5
           path: ${{ github.workspace }}/php-bin
@@ -306,7 +306,7 @@ jobs:
 
       - name: Upload server backup
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerBackup-x86_64-PHP8.3
           path: ${{ github.workspace }}/server-backup-x86_64-PHP8.3.tar.gz
@@ -314,7 +314,7 @@ jobs:
 
       - name: Upload server log
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerLog-x86_64-PHP8.3
           path: ${{ github.workspace }}/server/server.log
@@ -331,7 +331,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools and dependencies
         run: |
@@ -357,7 +357,7 @@ jobs:
 
       - name: Prepare compile.sh download cache
         id: download-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ./download_cache
           key: compile-sh-cache-ssl-https-arm64-${{ hashFiles('./compile.sh') }}
@@ -382,7 +382,7 @@ jobs:
           tar -czf ./Z-PHP-8.3-Linux-ARM64-PM5-debugging-symbols.tar.gz bin-debug
 
       - name: Upload PHP binary artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: PHP-8.3-Linux-PM5
@@ -397,7 +397,7 @@ jobs:
         run: tar -czf workspace.tar.gz install_data || true
 
       - name: Upload workspace
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: PHP-8.3-Linux-workspace-PM5
@@ -411,7 +411,7 @@ jobs:
     runs-on: ubuntu-22.04-arm
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools
         run: |
@@ -419,7 +419,7 @@ jobs:
           sudo apt-get install -y wget curl unzip tar
 
       - name: Download Linux PHP artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: PHP-8.3-Linux-PM5
           path: ${{ github.workspace }}/php-bin
@@ -632,7 +632,7 @@ jobs:
 
       - name: Upload server backup (tar.gz, flat layout, permissions preserved)
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerBackup-PM5-PHP8.3
           path: ${{ github.workspace }}/server-backup-PM5-PHP8.3.tar.gz
@@ -640,7 +640,7 @@ jobs:
 
       - name: Upload server log
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerLog-PM5-PHP8.3
           path: ${{ github.workspace }}/server/server.log
@@ -657,7 +657,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools and dependencies
         run: |
@@ -666,7 +666,7 @@ jobs:
 
       - name: Prepare compile.sh download cache
         id: download-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ./download_cache
           key: compile-sh-cache-android-arm64-${{ hashFiles('./compile.sh') }}
@@ -674,14 +674,14 @@ jobs:
 
       - name: Fetch musl cross-compiler cache
         id: compiler-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/compiler
           key: musl-cross-make-${{ env.MUSL_CROSS_MAKE_VERSION }}
 
       - name: Checkout musl-cross-make
         if: steps.compiler-cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           repository: pmmp/musl-cross-make
           path: musl-cross-make
@@ -734,7 +734,7 @@ jobs:
           ls -la ./PHP-8.3-Android-arm64-static-PM5.tar.gz
 
       - name: Upload PHP static binary artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: PHP-8.3-Android-arm64-static-PM5
@@ -749,7 +749,7 @@ jobs:
         run: tar -czf workspace.tar.gz install_data || true
 
       - name: Upload workspace
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: PHP-8.3-Android-workspace-PM5
@@ -763,7 +763,7 @@ jobs:
     runs-on: ubuntu-22.04-arm
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install tools
         run: |
@@ -771,7 +771,7 @@ jobs:
           sudo apt-get install -y wget curl unzip tar
 
       - name: Download Android PHP static binary artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: PHP-8.3-Android-arm64-static-PM5
           path: ${{ github.workspace }}/php-bin
@@ -969,7 +969,7 @@ jobs:
 
       - name: Upload Android server backup (tar.gz)
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerBackup-Android-arm64-PHP8.3
           path: ${{ github.workspace }}/server-backup-Android-arm64-PHP8.3.tar.gz
@@ -977,7 +977,7 @@ jobs:
 
       - name: Upload Android server log
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ServerLog-Android-arm64-PHP8.3
           path: ${{ github.workspace }}/server/server.log
